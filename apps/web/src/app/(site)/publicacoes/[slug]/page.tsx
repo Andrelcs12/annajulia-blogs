@@ -44,7 +44,7 @@ export async function generateMetadata({
         height: 630,
         quality: 88,
       })
-    : `${siteConfig.url}/images/anna-editorial-placeholder.png`;
+    : `${siteConfig.url}${siteConfig.editorialImage}`;
 
   return {
     title,
@@ -148,6 +148,24 @@ export default async function PublicationPage({
 
       <div className="mx-auto max-w-[46.875rem] px-5 py-14 sm:px-8 sm:py-20">
         <PublicationPortableText value={publication.content} />
+        <aside className="mt-14 rounded-lg border border-primary/15 bg-secondary/35 p-5 sm:p-6">
+          <p className="font-serif text-xl text-foreground">
+            Texto autoral de {siteConfig.name} —{" "}
+            <a
+              href={siteConfig.instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary underline decoration-primary/40 underline-offset-4 transition-colors hover:text-foreground"
+            >
+              {siteConfig.handle}
+            </a>
+          </p>
+          <p className="mt-3 text-sm leading-6 text-muted-foreground">
+            Não reproduza integralmente este texto sem autorização. Ao
+            compartilhar trechos, preserve a autoria e indique{" "}
+            {siteConfig.handle}.
+          </p>
+        </aside>
         <div className="mt-16 flex flex-col gap-5 border-t border-border pt-8 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-sm text-muted-foreground">
             Compartilhe esta leitura com alguém.

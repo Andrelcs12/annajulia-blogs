@@ -61,8 +61,8 @@ export function AnimatedName() {
         <p className="mb-2 text-[0.68rem] font-medium uppercase tracking-[0.34em] text-muted-foreground sm:text-xs">
           poemas · textos · reflexões
         </p>
-        <h1 className="font-serif text-[clamp(6rem,19vw,13rem)] font-normal leading-[0.82] tracking-[-0.075em] text-foreground">
-          Anna Julia
+        <h1 className="font-serif text-[clamp(4.5rem,18vw,12rem)] font-normal leading-[0.82] tracking-[-0.07em] text-foreground">
+          Julietta
         </h1>
 
         <motion.div
@@ -77,7 +77,7 @@ export function AnimatedName() {
             shouldReduceMotion
               ? { duration: 0.6 }
               : {
-                  duration:1,
+                  duration: 1,
                   times: [0, 0.25, 0.75, 1],
                   delay: 1,
                   repeat: Number.POSITIVE_INFINITY,

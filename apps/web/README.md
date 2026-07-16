@@ -1,4 +1,4 @@
-# Anna — site autoral
+# Julietta — cartas e escritos
 
 Site editorial em Next.js para publicação de poemas, textos e reflexões. O
 conteúdo e a autenticação do painel são gerenciados exclusivamente pelo Sanity.

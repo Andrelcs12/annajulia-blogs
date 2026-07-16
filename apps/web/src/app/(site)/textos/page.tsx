@@ -4,7 +4,7 @@ import { CategoryPage } from "@/components/publication/category-page";
 export const metadata: Metadata = {
   title: "Textos",
   description:
-    "Textos de Anna sobre memórias, afetos e delicadezas do cotidiano.",
+    "Textos de Julietta sobre memórias, afetos e palavras que nunca foram ditas.",
 };
 
 export const revalidate = 60;

@@ -1,5 +1,15 @@
-import { ArrowDownIcon } from "lucide-react";
+import { ArrowDownIcon, AtSignIcon } from "lucide-react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { siteConfig } from "@/lib/site";
 import { AnimatedName } from "./animated-name";
+
+const manifesto = [
+  "Todas as cartas que eu não te enviei;",
+  "Todas as palavras que eu não te falei;",
+  "Todos os pensamentos que eu não te contei;",
+  "Todas as lágrimas que eu derramei.",
+];
 
 export function Hero() {
   return (
@@ -13,11 +23,29 @@ export function Hero() {
         className="absolute -right-24 bottom-24 size-80 rounded-full bg-secondary/55 blur-3xl"
       />
       <AnimatedName />
-      <div className="relative z-10 mt-12 max-w-2xl text-center sm:mt-16">
-        <p className="font-serif text-2xl leading-relaxed tracking-[-0.015em] text-foreground sm:text-3xl">
-          “Palavras para aquilo que nem sempre conseguimos dizer.”
-        </p>
-        
+      <div className="relative z-10 mt-8 max-w-3xl text-center sm:mt-12">
+        <a
+          href={siteConfig.instagramUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-background/70 px-4 py-2 text-sm font-medium text-primary transition-colors hover:border-primary/50 hover:bg-accent"
+        >
+          <AtSignIcon className="size-4" strokeWidth={1.5} />
+          {siteConfig.handle}
+        </a>
+        <div className="mt-7 font-serif text-xl leading-relaxed tracking-[-0.015em] text-foreground sm:text-3xl sm:leading-relaxed">
+          {manifesto.map((line) => (
+            <p key={line}>{line}</p>
+          ))}
+        </div>
+        <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <Button asChild size="lg">
+            <Link href="/textos">Ler as cartas</Link>
+          </Button>
+          <Button asChild variant="outline" size="lg">
+            <Link href="/contato">Escrever para Julietta</Link>
+          </Button>
+        </div>
       </div>
       <a
         href="#destaque"

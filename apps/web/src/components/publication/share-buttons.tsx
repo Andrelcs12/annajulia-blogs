@@ -3,6 +3,7 @@
 import { CheckIcon, CopyIcon, Share2Icon } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { siteConfig } from "@/lib/site";
 
 export function ShareButtons({ title }: { title: string }) {
   const [copied, setCopied] = useState(false);
@@ -37,7 +38,8 @@ export function ShareButtons({ title }: { title: string }) {
     if (navigator.share) {
       try {
         await navigator.share({
-          title,
+          title: `${title} — ${siteConfig.name}`,
+          text: `Texto de ${siteConfig.name} — ${siteConfig.handle}`,
           url: window.location.href,
         });
         return;

@@ -30,6 +30,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "monthly",
       priority: 0.6,
     },
+    {
+      url: `${siteConfig.url}/contato`,
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
   ];
 
   return [

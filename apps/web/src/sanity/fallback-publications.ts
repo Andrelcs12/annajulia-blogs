@@ -25,7 +25,7 @@ const placeholderContent = [
   ),
   paragraph(
     "body",
-    "Depois da configuração, as publicações criadas e publicadas por Anna no Studio substituirão automaticamente estes exemplos.",
+    "Depois da configuração, as publicações criadas e publicadas por Julietta no Studio substituirão automaticamente estes exemplos.",
   ),
 ];
 

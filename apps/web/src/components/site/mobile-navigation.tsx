@@ -31,10 +31,10 @@ export function MobileNavigation() {
           <FeatherIcon className="size-4 text-primary" strokeWidth={1.4} />
           <div>
             <SheetTitle className="font-serif text-xl font-medium tracking-[-0.02em]">
-              Anna Julia
+              {siteConfig.name}
             </SheetTitle>
             <SheetDescription className="text-xs">
-              Poemas, textos e reflexões.
+              Cartas, poemas e sentimentos.
             </SheetDescription>
           </div>
         </div>
@@ -57,9 +57,14 @@ export function MobileNavigation() {
           ))}
         </nav>
 
-        <p className="pb-2 pt-4 text-center text-xs text-muted-foreground">
-          Feito para ler devagar.
-        </p>
+        <a
+          href={siteConfig.instagramUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="pb-2 pt-4 text-center text-xs font-medium text-primary"
+        >
+          {siteConfig.handle}
+        </a>
       </SheetContent>
     </Sheet>
   );

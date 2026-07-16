@@ -2,6 +2,7 @@ import { ArrowRightIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { siteConfig } from "@/lib/site";
 import { getSanityImageUrl } from "@/sanity/image";
 import type { Publication } from "@/types/publication";
 import { CategoryLabel } from "./category-label";
@@ -17,7 +18,7 @@ export function FeaturedPublication({
         height: 900,
         quality: 85,
       })
-    : "/images/anna-editorial-placeholder.png";
+    : siteConfig.editorialImage;
 
   return (
     <section
@@ -30,7 +31,7 @@ export function FeaturedPublication({
             src={imageSrc}
             alt={
               publication.image?.alt ??
-              "Caderno aberto e flores secas em composição editorial provisória"
+              "Caderno aberto, cartas e flores secas em composição editorial"
             }
             fill
             priority
@@ -38,7 +39,6 @@ export function FeaturedPublication({
             sizes="(max-width: 1024px) 100vw, 50vw"
             className="object-cover transition-transform duration-700 hover:scale-[1.015]"
           />
-          
         </div>
         <div className="flex items-center px-6 py-14 sm:px-12 lg:px-16 lg:py-20">
           <div className="max-w-xl">

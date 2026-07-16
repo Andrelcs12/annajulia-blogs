@@ -13,7 +13,8 @@ export function PublicationList({
           Ainda não há publicações por aqui.
         </p>
         <p className="mt-2 text-sm text-muted-foreground">
-          Quando Anna publicar no Sanity, os textos aparecerão automaticamente.
+          Quando Julietta publicar no Sanity, os textos aparecerão
+          automaticamente.
         </p>
       </div>
     );

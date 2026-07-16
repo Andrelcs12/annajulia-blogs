@@ -9,7 +9,7 @@ import { isSanityConfigured } from "@/sanity/env";
 
 export const metadata = {
   ...studioMetadata,
-  title: "Studio | Anna",
+  title: "Studio | Julietta",
   robots: {
     index: false,
     follow: false,

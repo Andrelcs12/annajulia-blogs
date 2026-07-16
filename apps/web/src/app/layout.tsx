@@ -32,20 +32,11 @@ export const metadata: Metadata = {
     title: `${siteConfig.name} — Poemas, textos e reflexões`,
     description: siteConfig.description,
     url: siteConfig.url,
-    images: [
-      {
-        url: "/sites/logos/logo.png",
-        width: 1024,
-        height: 1536,
-        alt: "Caderno aberto e flores secas em composição editorial",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: `${siteConfig.name} — Poemas, textos e reflexões`,
     description: siteConfig.description,
-    images: ["/images/anna-editorial-placeholder.png"],
   },
 };
 
