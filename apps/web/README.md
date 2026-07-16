@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Anna — site autoral
 
-## Getting Started
+Site editorial em Next.js para publicação de poemas, textos e reflexões. O
+conteúdo e a autenticação do painel são gerenciados exclusivamente pelo Sanity.
 
-First, run the development server:
+## Requisitos
+
+- Node.js 22.12 ou superior
+- Um projeto no Sanity com um dataset público
+
+## Configuração local
+
+1. Instale as dependências:
+
+   ```bash
+   npm install
+   ```
+
+2. Copie `.env.example` para `.env.local`.
+
+3. Preencha:
+
+   ```env
+   NEXT_PUBLIC_SANITY_PROJECT_ID=seu_project_id
+   NEXT_PUBLIC_SANITY_DATASET=production
+   NEXT_PUBLIC_SITE_URL=http://localhost:3000
+   ```
+
+4. No gerenciamento do projeto Sanity, adicione `http://localhost:3000` às
+   origens CORS com credenciais. Adicione também o domínio final quando publicar
+   o site.
+
+5. Inicie a aplicação:
+
+   ```bash
+   npm run dev
+   ```
+
+O site estará em `http://localhost:3000` e o Studio em
+`http://localhost:3000/studio`.
+
+## Publicação
+
+No Studio, crie uma **Publicação**, escolha a categoria, preencha o conteúdo e
+clique em **Publish**. O site consulta apenas documentos publicados e atualiza o
+conteúdo em até 60 segundos.
+
+Não é necessário criar token para a leitura pública. O acesso ao Studio usa a
+autenticação e as permissões nativas do Sanity.
+
+## Verificações
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run lint
+npm run typecheck
+npm run build
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

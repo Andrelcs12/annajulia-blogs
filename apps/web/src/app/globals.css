@@ -1,26 +1,180 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: oklch(0.992 0.004 40);
+  --foreground: oklch(0.255 0.015 35);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.255 0.015 35);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.255 0.015 35);
+  --primary: oklch(0.88 0.055 5);
+  --primary-foreground: oklch(0.28 0.025 20);
+  --secondary: oklch(0.925 0.034 235);
+  --secondary-foreground: oklch(0.29 0.025 235);
+  --muted: oklch(0.966 0.007 35);
+  --muted-foreground: oklch(0.52 0.018 35);
+  --accent: oklch(0.945 0.025 5);
+  --accent-foreground: oklch(0.28 0.025 20);
+  --destructive: oklch(0.61 0.2 25);
+  --border: oklch(0.91 0.014 30);
+  --input: oklch(0.91 0.014 30);
+  --ring: oklch(0.74 0.07 5);
+  --radius: 0.75rem;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --font-sans: "Geist", "Geist Fallback", ui-sans-serif, system-ui, sans-serif;
+  --font-serif:
+    "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", "Book Antiqua",
+    Georgia, serif;
+  --radius-xs: calc(var(--radius) * 0.5);
+  --radius-sm: calc(var(--radius) * 0.75);
+  --radius-md: calc(var(--radius) * 0.875);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.5);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes soft-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
   }
+  50% {
+    transform: translateY(0.35rem);
+  }
+}
+
+* {
+  border-color: var(--border);
+}
+
+::selection {
+  background: color-mix(in oklab, var(--primary) 70%, white);
+  color: var(--foreground);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.publication-content {
+  max-width: 46.875rem;
+  color: color-mix(in oklab, var(--foreground) 90%, transparent);
+  font-size: clamp(1.0625rem, 1.5vw, 1.1875rem);
+  line-height: 2;
+}
+
+.publication-content p {
+  margin-block: 1.65em;
+}
+
+.publication-content h2,
+.publication-content h3 {
+  font-family:
+    "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", "Book Antiqua",
+    Georgia, serif;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  color: var(--foreground);
+}
+
+.publication-content h2 {
+  margin-block: 2.2em 0.8em;
+  font-size: clamp(2.25rem, 5vw, 3.25rem);
+}
+
+.publication-content h3 {
+  margin-block: 2em 0.7em;
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+}
+
+.publication-content blockquote {
+  margin-block: 2.4em;
+  border-left: 1px solid var(--primary);
+  padding-left: clamp(1.25rem, 4vw, 2.25rem);
+  font-family:
+    "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", "Book Antiqua",
+    Georgia, serif;
+  font-size: 1.45em;
+  font-style: italic;
+  line-height: 1.55;
+  color: var(--foreground);
+}
+
+.publication-content ul,
+.publication-content ol {
+  margin-block: 1.7em;
+  padding-left: 1.5em;
+}
+
+.publication-content ul {
+  list-style: disc;
+}
+
+.publication-content ol {
+  list-style: decimal;
+}
+
+.publication-content li {
+  margin-block: 0.55em;
+  padding-left: 0.35em;
+}
+
+.publication-content strong {
+  font-weight: 650;
+  color: var(--foreground);
+}
+
+.publication-content em {
+  font-style: italic;
+}
+
+.publication-content a {
+  color: var(--foreground);
+  text-decoration: underline;
+  text-decoration-color: var(--primary);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+  transition: color 160ms ease;
+}
+
+.publication-content a:hover {
+  color: color-mix(in oklab, var(--foreground) 70%, var(--primary));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto;
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
+    transition-duration: 0.01ms;
+  }
 }
