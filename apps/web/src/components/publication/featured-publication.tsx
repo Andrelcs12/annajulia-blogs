@@ -38,11 +38,7 @@ export function FeaturedPublication({
             sizes="(max-width: 1024px) 100vw, 50vw"
             className="object-cover transition-transform duration-700 hover:scale-[1.015]"
           />
-          {!publication.image && (
-            <span className="absolute bottom-5 left-5 rounded-full bg-background/85 px-3 py-1 text-[0.62rem] uppercase tracking-[0.16em] text-muted-foreground backdrop-blur-sm">
-              Imagem provisória
-            </span>
-          )}
+          
         </div>
         <div className="flex items-center px-6 py-14 sm:px-12 lg:px-16 lg:py-20">
           <div className="max-w-xl">

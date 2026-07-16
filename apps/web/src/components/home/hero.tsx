@@ -13,13 +13,11 @@ export function Hero() {
         className="absolute -right-24 bottom-24 size-80 rounded-full bg-secondary/55 blur-3xl"
       />
       <AnimatedName />
-      <div className="relative z-10 mt-12 max-w-xl text-center sm:mt-16">
+      <div className="relative z-10 mt-12 max-w-2xl text-center sm:mt-16">
         <p className="font-serif text-2xl leading-relaxed tracking-[-0.015em] text-foreground sm:text-3xl">
           “Palavras para aquilo que nem sempre conseguimos dizer.”
         </p>
-        <span className="mt-4 inline-block rounded-full border border-border bg-background/70 px-3 py-1 text-[0.65rem] font-medium uppercase tracking-[0.18em] text-muted-foreground">
-          Frase provisória
-        </span>
+        
       </div>
       <a
         href="#destaque"

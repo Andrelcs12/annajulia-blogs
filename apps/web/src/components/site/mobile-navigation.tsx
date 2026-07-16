@@ -1,6 +1,6 @@
 "use client";
 
-import { MenuIcon } from "lucide-react";
+import { FeatherIcon, MenuIcon } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
@@ -23,29 +23,43 @@ export function MobileNavigation() {
           className="md:hidden"
           aria-label="Abrir menu"
         >
-          <MenuIcon className="size-5" />
+          <MenuIcon className="size-5" strokeWidth={1.5} />
         </Button>
       </SheetTrigger>
-      <SheetContent>
-        <div className="border-b border-border pb-6 pr-10">
-          <SheetTitle>Anna</SheetTitle>
-          <SheetDescription>Poemas, textos e reflexões.</SheetDescription>
+      <SheetContent className="flex flex-col bg-background">
+        <div className="flex items-center gap-2.5 border-b border-border/70 pb-6 pr-10">
+          <FeatherIcon className="size-4 text-primary" strokeWidth={1.4} />
+          <div>
+            <SheetTitle className="font-serif text-xl font-medium tracking-[-0.02em]">
+              Anna Julia
+            </SheetTitle>
+            <SheetDescription className="text-xs">
+              Poemas, textos e reflexões.
+            </SheetDescription>
+          </div>
         </div>
-        <nav aria-label="Navegação móvel" className="flex flex-col py-4">
+
+        <nav aria-label="Navegação móvel" className="flex flex-1 flex-col py-2">
           {siteConfig.navigation.map((item, index) => (
             <SheetClose asChild key={item.href}>
               <Link
                 href={item.href}
-                className="group flex items-center gap-4 border-b border-border/70 py-4 text-lg text-foreground transition-colors hover:text-primary"
+                className="group flex items-center gap-4 border-b border-border/50 py-4 text-foreground transition-colors hover:text-primary"
               >
-                <span className="w-6 text-xs tabular-nums text-muted-foreground">
+                <span className="w-6 text-xs tabular-nums text-muted-foreground/70">
                   {String(index + 1).padStart(2, "0")}
                 </span>
-                <span className="font-serif text-2xl">{item.label}</span>
+                <span className="font-serif text-2xl tracking-[-0.01em]">
+                  {item.label}
+                </span>
               </Link>
             </SheetClose>
           ))}
         </nav>
+
+        <p className="pb-2 pt-4 text-center text-xs text-muted-foreground">
+          Feito para ler devagar.
+        </p>
       </SheetContent>
     </Sheet>
   );

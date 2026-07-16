@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     url: siteConfig.url,
     images: [
       {
-        url: "/images/anna-editorial-placeholder.png",
+        url: "/sites/logos/logo.png",
         width: 1024,
         height: 1536,
         alt: "Caderno aberto e flores secas em composição editorial",
