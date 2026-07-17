@@ -1,4 +1,4 @@
-import { ArrowRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 
 type BackToHomeProps = {
@@ -9,26 +9,24 @@ function BackToHome({ page }: BackToHomeProps) {
   return (
     <nav
       aria-label="Breadcrumb"
-      className="flex items-center mb-4 gap-2 text-sm text-muted-foreground"
+      className="text-xs tracking-[0.01em] text-muted-foreground"
     >
-      <Link
-        href="/"
-        className="transition-colors hover:text-foreground"
-      >
-        Home
-      </Link>
-
-      <ArrowRight
-        className="size-4"
-        aria-hidden="true"
-      />
-
-      <span
-        aria-current="page"
-        className="text-foreground"
-      >
-        {page}
-      </span>
+      <ol className="flex items-center gap-1.5 sm:gap-2">
+        <li>
+          <Link
+            href="/"
+            className="rounded-sm transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
+          >
+            Início
+          </Link>
+        </li>
+        <li aria-hidden="true">
+          <ChevronRight className="size-3.5" strokeWidth={1.5} />
+        </li>
+        <li aria-current="page" className="font-medium text-foreground">
+          {page}
+        </li>
+      </ol>
     </nav>
   );
 }

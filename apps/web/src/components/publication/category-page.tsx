@@ -18,16 +18,21 @@ export async function CategoryPage({
 
   return (
     <>
-      <header className="border-b border-border bg-muted/20">
-        <div className="mx-auto max-w-5xl px-5 py-20 sm:px-8 sm:py-16">
-          <BackToHome page={eyebrow} />
-          <p className="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
+      <header className="relative overflow-hidden border-b border-border/80 bg-muted/20">
+        <div
+          aria-hidden="true"
+          className="absolute -right-28 -top-40 size-[28rem] rounded-full bg-primary/[0.045] blur-3xl"
+        />
+        <div className="relative mx-auto max-w-5xl px-5 py-16 sm:px-8 sm:py-20 lg:py-24">
+          <BackToHome page={title} />
+          <p className="mt-10 text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-primary sm:mt-12 sm:text-[0.68rem]">
             {eyebrow}
           </p>
-          <h1 className="mt-5 font-serif text-6xl leading-none tracking-[-0.05em] sm:text-8xl">
+          <h1 className="mt-4 max-w-3xl font-serif text-[clamp(3.75rem,10vw,7.5rem)] leading-[0.88] tracking-[-0.055em] text-foreground">
             {title}
           </h1>
-          <p className="mt-7 max-w-2xl text-base leading-8 text-muted-foreground sm:text-lg">
+          <div aria-hidden="true" className="mt-7 h-px w-12 bg-primary/60" />
+          <p className="mt-6 max-w-2xl text-[1.05rem] leading-8 text-muted-foreground sm:text-lg sm:leading-8">
             {description}
           </p>
         </div>
