@@ -4,13 +4,13 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/lib/site";
 import { getSanityImageUrl } from "@/sanity/image";
-import type { Publication } from "@/types/publication";
+import type { PublicationPreview } from "@/types/publication";
 import { CategoryLabel } from "./category-label";
 
 export function FeaturedPublication({
   publication,
 }: {
-  publication: Publication;
+  publication: PublicationPreview;
 }) {
   const imageSrc = publication.image
     ? getSanityImageUrl(publication.image, {

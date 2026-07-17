@@ -1,5 +1,6 @@
+import { Pagination } from "@/components/publication/pagination";
 import { PublicationList } from "@/components/publication/publication-list";
-import { getPublicationsByCategory } from "@/sanity/data";
+import { getPublicationPage } from "@/sanity/data";
 import type { PublicationCategory } from "@/types/publication";
 import { BackToHome } from "../ui/back-to-home";
 
@@ -8,13 +9,17 @@ export async function CategoryPage({
   eyebrow,
   title,
   description,
+  page,
+  order,
 }: {
   category: PublicationCategory;
   eyebrow: string;
   title: string;
   description: string;
+  page: number;
+  order: "asc" | "desc";
 }) {
-  const publications = await getPublicationsByCategory(category);
+  const result = await getPublicationPage({ category, page, order });
 
   return (
     <>
@@ -38,7 +43,48 @@ export async function CategoryPage({
         </div>
       </header>
       <section className="mx-auto max-w-5xl px-5 py-14 sm:px-8 sm:py-20">
-        <PublicationList publications={publications} />
+        <div className="flex flex-col gap-5 border-b border-border pb-6 sm:flex-row sm:items-end sm:justify-between">
+          <p className="text-sm text-muted-foreground">
+            {result.total === 1
+              ? "1 publicação"
+              : `${result.total} publicações`}
+          </p>
+          <form className="flex items-center gap-2" method="get">
+            <label
+              htmlFor={`${category}-order`}
+              className="text-xs text-muted-foreground"
+            >
+              Ordenar por
+            </label>
+            <select
+              id={`${category}-order`}
+              name="ordem"
+              defaultValue={order}
+              className="h-9 rounded-md border border-input bg-background px-3 text-sm text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              aria-label="Ordenar publicações"
+            >
+              <option value="desc">Mais recentes</option>
+              <option value="asc">Mais antigos</option>
+            </select>
+            <button type="submit" className="sr-only">
+              Aplicar ordenação
+            </button>
+          </form>
+        </div>
+        <PublicationList publications={result.publications} />
+        <Pagination
+          page={result.page}
+          total={result.total}
+          pageSize={result.pageSize}
+          pathname={
+            category === "poema"
+              ? "/poemas"
+              : category === "texto"
+                ? "/textos"
+                : "/reflexoes"
+          }
+          searchParams={{ ordem: order === "asc" ? "asc" : undefined }}
+        />
       </section>
     </>
   );

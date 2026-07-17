@@ -1,4 +1,4 @@
-import { ArrowLeftIcon } from "lucide-react";
+import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -6,9 +6,11 @@ import { notFound } from "next/navigation";
 import { CategoryLabel } from "@/components/publication/category-label";
 import { PublicationPortableText } from "@/components/publication/portable-text";
 import { ShareButtons } from "@/components/publication/share-buttons";
+import { BackToHome } from "@/components/ui/back-to-home";
 import { formatPublicationDate } from "@/lib/date";
+import { getReadingTime } from "@/lib/reading-time";
 import { siteConfig } from "@/lib/site";
-import { getAllPublications, getPublicationBySlug } from "@/sanity/data";
+import { getAdjacentPublications, getPublicationBySlug } from "@/sanity/data";
 import { getSanityImageUrl } from "@/sanity/image";
 import { categoryPluralLabels, categoryRoutes } from "@/types/publication";
 
@@ -17,11 +19,6 @@ export const revalidate = 60;
 type PublicationPageProps = {
   params: Promise<{ slug: string }>;
 };
-
-export async function generateStaticParams() {
-  const publications = await getAllPublications();
-  return publications.map((publication) => ({ slug: publication.slug }));
-}
 
 export async function generateMetadata({
   params,
@@ -87,17 +84,23 @@ export default async function PublicationPage({
     notFound();
   }
 
+  const adjacent = await getAdjacentPublications(publication);
+  const readingTime = getReadingTime(publication.content);
+
   return (
     <article>
       <header className="border-b border-border bg-muted/20">
         <div className="mx-auto max-w-4xl px-5 py-14 sm:px-8 sm:py-20">
-          <Link
-            href={categoryRoutes[publication.category]}
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-          >
-            <ArrowLeftIcon className="size-4" />
-            Voltar para {categoryPluralLabels[publication.category]}
-          </Link>
+          <BackToHome
+            items={[
+              { label: "Início", href: "/" },
+              {
+                label: categoryPluralLabels[publication.category],
+                href: categoryRoutes[publication.category],
+              },
+              { label: publication.title },
+            ]}
+          />
           <div className="mt-12 flex flex-wrap items-center gap-4">
             <CategoryLabel category={publication.category} />
             <time
@@ -106,6 +109,7 @@ export default async function PublicationPage({
             >
               {formatPublicationDate(publication.publishedAt)}
             </time>
+            <span className="text-xs text-muted-foreground">{readingTime}</span>
             {publication.isPlaceholder && (
               <span className="rounded-full border border-border px-3 py-1 text-[0.6rem] uppercase tracking-[0.16em] text-muted-foreground">
                 Conteúdo demonstrativo
@@ -166,12 +170,62 @@ export default async function PublicationPage({
             {siteConfig.handle}.
           </p>
         </aside>
+        <aside className="mt-8 border-l border-primary/50 pl-5">
+          <p className="font-serif text-xl">Escreva para Julietta</p>
+          <p className="mt-2 text-sm leading-6 text-muted-foreground">
+            Se esta leitura encontrou você, há espaço para deixar algumas
+            palavras.
+          </p>
+          <Link
+            href="/contato"
+            className="mt-3 inline-flex text-sm text-primary underline decoration-primary/50 underline-offset-4 hover:text-foreground"
+          >
+            Enviar uma mensagem
+          </Link>
+        </aside>
         <div className="mt-16 flex flex-col gap-5 border-t border-border pt-8 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-sm text-muted-foreground">
             Compartilhe esta leitura com alguém.
           </p>
           <ShareButtons title={publication.title} />
         </div>
+        {adjacent.previous || adjacent.next ? (
+          <nav
+            aria-label="Navegação entre publicações"
+            className="mt-14 grid gap-5 border-t border-border pt-8 sm:grid-cols-2"
+          >
+            {adjacent.previous ? (
+              <Link
+                href={`/publicacoes/${adjacent.previous.slug}`}
+                className="group min-w-0"
+              >
+                <span className="inline-flex items-center gap-2 text-xs text-muted-foreground">
+                  <ArrowLeftIcon className="size-4" />
+                  Publicação anterior
+                </span>
+                <span className="mt-2 block font-serif text-2xl leading-tight group-hover:text-primary">
+                  {adjacent.previous.title}
+                </span>
+              </Link>
+            ) : (
+              <span />
+            )}
+            {adjacent.next ? (
+              <Link
+                href={`/publicacoes/${adjacent.next.slug}`}
+                className="group min-w-0 text-left sm:text-right"
+              >
+                <span className="inline-flex items-center gap-2 text-xs text-muted-foreground">
+                  Próxima publicação
+                  <ArrowRightIcon className="size-4" />
+                </span>
+                <span className="mt-2 block font-serif text-2xl leading-tight group-hover:text-primary">
+                  {adjacent.next.title}
+                </span>
+              </Link>
+            ) : null}
+          </nav>
+        ) : null}
       </div>
     </article>
   );

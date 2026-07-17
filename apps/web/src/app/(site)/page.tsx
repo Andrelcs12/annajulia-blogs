@@ -5,24 +5,13 @@ import { Hero } from "@/components/home/hero";
 import { SectionHeading } from "@/components/home/section-heading";
 import { FeaturedPublication } from "@/components/publication/featured-publication";
 import { PublicationList } from "@/components/publication/publication-list";
-import { getAllPublications } from "@/sanity/data";
+import { getHomePublications } from "@/sanity/data";
 
 export const revalidate = 60;
 
 export default async function HomePage() {
-  const publications = await getAllPublications();
-  const featured =
-    publications.find((publication) => publication.featured) ?? publications[0];
-  const latest = publications.slice(0, 6);
-  const poems = publications.filter(
-    (publication) => publication.category === "poema",
-  );
-  const texts = publications.filter(
-    (publication) => publication.category === "texto",
-  );
-  const reflections = publications.filter(
-    (publication) => publication.category === "reflexao",
-  );
+  const { featured, latest, poems, texts, reflections } =
+    await getHomePublications();
 
   return (
     <>
@@ -64,6 +53,14 @@ export default async function HomePage() {
         <div className="relative z-10 mx-auto max-w-5xl px-5 sm:px-8">
           <SectionHeading eyebrow="Novas páginas" title="Últimas publicações" />
           <PublicationList publications={latest} />
+          {latest.length > 0 ? (
+            <a
+              href="/buscar"
+              className="mt-7 inline-flex text-sm text-muted-foreground underline decoration-primary/60 underline-offset-4 transition-colors hover:text-foreground"
+            >
+              Explorar todas as publicações
+            </a>
+          ) : null}
         </div>
       </section>
 

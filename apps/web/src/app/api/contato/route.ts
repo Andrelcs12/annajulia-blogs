@@ -32,8 +32,7 @@ function getResend() {
 }
 
 function getEmailSettings() {
-  const recipient =
-    process.env.JULIETTA_CONTACT_EMAIL ?? process.env.ANNA_CONTACT_EMAIL;
+  const recipient = process.env.JULIETTA_CONTACT_EMAIL;
   const from =
     process.env.RESEND_FROM_EMAIL ?? "Julietta <onboarding@resend.dev>";
 

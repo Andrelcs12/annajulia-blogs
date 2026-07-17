@@ -1,8 +1,8 @@
 "use client";
 
+import { BookOpen } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import { AnimatedBookIntro } from "./animated-book-intro";
-import { BookOpen } from "lucide-react";
 
 const NAME = "Julietta";
 const editorialEase = [0.22, 1, 0.36, 1] as const;
@@ -15,7 +15,7 @@ function TitleOrnaments({
   reduceMotion: boolean | null;
 }) {
   const isLeft = side === "left";
-  const delay = reduceMotion ? 0 : isLeft ? 2.30 : 2.30 ;
+  const delay = reduceMotion ? 0 : isLeft ? 2.3 : 2.3;
 
   return (
     <motion.span
@@ -63,46 +63,45 @@ export function AnimatedName() {
           <TitleOrnaments side="right" reduceMotion={reduceMotion} />
         </div>
 
-        
         <motion.span
-  aria-hidden="true"
-  className="mt-4 inline-flex items-center justify-center text-primary/70 [perspective:400px] sm:mt-5"
-  initial={reduceMotion ? false : { opacity: 0, scale: 0.7 }}
-  animate={{ opacity: 1, scale: 1 }}
-  transition={{
-    duration: 2.45,
-    delay: detailDelay,
-    ease: editorialEase,
-  }}
->
-  <motion.span
-    className="inline-flex origin-center"
-    initial={
-      reduceMotion
-        ? false
-        : {
-            rotateX: 24,
-            rotateY: -35,
-            scaleX: 0.72,
-          }
-    }
-    animate={{
-      rotateX: 0,
-      rotateY: 0,
-      scaleX: 1,
-    }}
-    transition={{
-      duration: 1.9,
-      delay: detailDelay,
-      ease: editorialEase,
-    }}
-  >
-    <BookOpen
-      className="size-8 stroke-[1.2] sm:size-9"
-      aria-hidden="true"
-    />
-  </motion.span>
-</motion.span>
+          aria-hidden="true"
+          className="mt-4 inline-flex items-center justify-center text-primary/70 [perspective:400px] sm:mt-5"
+          initial={reduceMotion ? false : { opacity: 0, scale: 0.7 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{
+            duration: 2.45,
+            delay: detailDelay,
+            ease: editorialEase,
+          }}
+        >
+          <motion.span
+            className="inline-flex origin-center"
+            initial={
+              reduceMotion
+                ? false
+                : {
+                    rotateX: 24,
+                    rotateY: -35,
+                    scaleX: 0.72,
+                  }
+            }
+            animate={{
+              rotateX: 0,
+              rotateY: 0,
+              scaleX: 1,
+            }}
+            transition={{
+              duration: 1.9,
+              delay: detailDelay,
+              ease: editorialEase,
+            }}
+          >
+            <BookOpen
+              className="size-8 stroke-[1.2] sm:size-9"
+              aria-hidden="true"
+            />
+          </motion.span>
+        </motion.span>
 
         <motion.p
           className="order-first mb-4 text-[0.65rem] font-medium uppercase tracking-[0.3em] text-primary sm:mb-6 sm:text-sm sm:tracking-[0.45em]"

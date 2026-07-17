@@ -14,7 +14,7 @@ export const siteConfig = {
     process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ??
     "http://localhost:3000",
   navigation: [
-    { href: "/", label: "Home" },
+    { href: "/", label: "Início" },
     { href: "/poemas", label: "Poemas" },
     { href: "/textos", label: "Textos" },
     { href: "/reflexoes", label: "Reflexões" },

@@ -10,7 +10,7 @@ export default function NotFound() {
           Página 404
         </p>
         <h1 className="mt-5 font-serif text-6xl tracking-[-0.05em] sm:text-8xl">
-          Esta página se perdeu.
+          Esta carta não chegou ao destino.
         </h1>
         <p className="mx-auto mt-6 max-w-lg leading-7 text-muted-foreground">
           Talvez ela ainda esteja sendo escrita. Você pode voltar e encontrar
@@ -19,7 +19,7 @@ export default function NotFound() {
         <Button asChild variant="outline" className="mt-8">
           <Link href="/">
             <ArrowLeftIcon className="size-4" />
-            Voltar para a Home
+            Voltar ao início
           </Link>
         </Button>
       </div>

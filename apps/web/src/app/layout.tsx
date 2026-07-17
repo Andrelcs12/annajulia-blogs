@@ -19,7 +19,7 @@ const cormorant = Cormorant_Garamond({
 
 const siteTitle = `${siteConfig.name} — Poemas, textos e reflexões`;
 const shareImage = "/site/logos/link.png";
-const browserIcon = "/site/logos/logooo.png";
+const browserIcon = "/site/logos/logo.png";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),

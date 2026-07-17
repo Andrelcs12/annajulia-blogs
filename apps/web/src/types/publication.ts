@@ -27,6 +27,13 @@ export type Publication = {
 
 export type PublicationPreview = Omit<Publication, "content">;
 
+export type PublicationPage = {
+  publications: PublicationPreview[];
+  total: number;
+  page: number;
+  pageSize: number;
+};
+
 export const categoryLabels: Record<PublicationCategory, string> = {
   poema: "Poema",
   texto: "Texto",

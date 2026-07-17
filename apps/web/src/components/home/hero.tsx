@@ -1,4 +1,4 @@
-import { ArrowDownIcon, AtSignIcon } from "lucide-react";
+import { ArrowDownIcon } from "lucide-react";
 import Link from "next/link";
 import { BotanicalDecoration } from "@/components/brand/botanical-decoration";
 import { Button } from "@/components/ui/button";
@@ -43,19 +43,19 @@ export function Hero() {
       </div>
       <div className="relative z-10 mt-8 max-w-3xl text-center sm:mt-12">
         <Button
-  asChild
-  variant="outline"
-  size="lg"
-  className="rounded-full border-primary/25 bg-background/70 text-primary hover:border-primary/50 hover:bg-primary/5"
->
-  <a
-    href={siteConfig.instagramUrl}
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    {siteConfig.handle}
-  </a>
-</Button>
+          asChild
+          variant="outline"
+          size="lg"
+          className="rounded-full border-primary/25 bg-background/70 text-primary hover:border-primary/50 hover:bg-primary/5"
+        >
+          <a
+            href={siteConfig.instagramUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {siteConfig.handle}
+          </a>
+        </Button>
         <div className="mt-7 font-serif text-xl leading-relaxed tracking-[-0.015em] text-foreground sm:text-3xl sm:leading-relaxed">
           {manifesto.map((line) => (
             <p key={line}>{line}</p>

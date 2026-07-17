@@ -1,6 +1,7 @@
 "use client";
 
-import { FeatherIcon, MenuIcon } from "lucide-react";
+import { MenuIcon } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
@@ -12,7 +13,6 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { siteConfig } from "@/lib/site";
-import Image from "next/image";
 
 export function MobileNavigation() {
   return (
@@ -30,18 +30,12 @@ export function MobileNavigation() {
       <SheetContent className="flex flex-col bg-background">
         <div className="flex items-center gap-2.5 border-b border-border/70 pb-6 pr-10">
           <Image
-                                src="/site/logos/image.png"
-                                alt={
-                                  
-                                  "Logo Julietta"
-                                }
-                               
-                                priority
-                                loading="eager"
-                                height={100}
-                                width={50}
-                                className="object-cover transition-transform duration-700 "
-                              />
+            src="/site/logos/image.png"
+            alt="Logo Julietta"
+            height={40}
+            width={24}
+            className="h-10 w-6 object-contain"
+          />
           <div>
             <SheetTitle className="font-serif text-xl font-medium tracking-[-0.02em]">
               {siteConfig.name}
@@ -74,7 +68,8 @@ export function MobileNavigation() {
           href={siteConfig.instagramUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="pb-2 pt-4 text-center text-md font-medium text-primary"
+          aria-label={`${siteConfig.handle} no Instagram (abre em nova aba)`}
+          className="min-h-11 pb-2 pt-4 text-center text-base font-medium text-primary"
         >
           {siteConfig.handle}
         </a>
