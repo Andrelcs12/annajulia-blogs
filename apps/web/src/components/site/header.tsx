@@ -24,7 +24,7 @@ export function Header() {
           <Link
           href="/"
           aria-label="Ir para a página inicial"
-          className="font-serif text-lg font-medium tracking-[-0.02em] text-foreground transition-colors hover:text-primary sm:text-2xl sm:tracking-[-0.03em]"
+          className="font-serif text-2xl font-medium tracking-[-0.02em] text-foreground transition-colors hover:text-primary sm:text-2xl sm:tracking-[-0.03em]"
         >
           {siteConfig.name}
         </Link>

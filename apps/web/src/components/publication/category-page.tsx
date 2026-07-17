@@ -1,6 +1,7 @@
 import { PublicationList } from "@/components/publication/publication-list";
 import { getPublicationsByCategory } from "@/sanity/data";
 import type { PublicationCategory } from "@/types/publication";
+import { BackToHome } from "../ui/back-to-home";
 
 export async function CategoryPage({
   category,
@@ -18,7 +19,8 @@ export async function CategoryPage({
   return (
     <>
       <header className="border-b border-border bg-muted/20">
-        <div className="mx-auto max-w-5xl px-5 py-20 sm:px-8 sm:py-28">
+        <div className="mx-auto max-w-5xl px-5 py-20 sm:px-8 sm:py-16">
+          <BackToHome page={eyebrow} />
           <p className="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
             {eyebrow}
           </p>

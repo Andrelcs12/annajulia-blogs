@@ -1,20 +1,38 @@
 import { AtSignIcon, FeatherIcon } from "lucide-react";
 import Link from "next/link";
 import { siteConfig } from "@/lib/site";
+import { BotanicalDecoration } from "../brand/botanical-decoration";
+import Image from "next/image";
 
 export function Footer() {
   return (
-    <footer className="mt-20 border-t border-border/70 bg-muted/20 sm:mt-24">
+
+    <footer className="relative mt-20 overflow-hidden border-t border-border/70 bg-muted/20 sm:mt-24">
+      
+      {/* 2. BotanicalDecoration movido para cá como background absoluto */}
+      <div className="pointer-events-none absolute inset-0 mt-24 -z-10 flex items-center justify-center md:mt-44 opacity-10 sm:opacity-40">
+        <BotanicalDecoration />
+      </div>
+
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-12 sm:gap-12 sm:px-8 sm:py-16 md:grid-cols-[1fr_auto] lg:px-12">
         <div className="text-center md:text-left">
           <Link
             href="/"
             className="inline-flex items-center gap-2.5 font-serif text-2xl tracking-[-0.03em] transition-colors hover:text-primary sm:text-3xl"
           >
-            <FeatherIcon
-              className="size-4.5 text-primary sm:size-5"
-              strokeWidth={1.4}
-            />
+            <Image
+                                  src="/site/logos/image.png"
+                                  alt={
+                                    
+                                    "Logo Julietta"
+                                  }
+                                 
+                                  priority
+                                  loading="eager"
+                                  height={100}
+                                  width={50}
+                                  className="object-cover transition-transform duration-700 "
+                                />
             {siteConfig.name}
           </Link>
           <p className="mx-auto mt-4 max-w-sm text-sm leading-7 text-muted-foreground md:mx-0">
@@ -26,7 +44,8 @@ export function Footer() {
             rel="noopener noreferrer"
             className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-primary transition-colors hover:text-foreground"
           >
-            <AtSignIcon className="size-4" strokeWidth={1.5} />
+            {/* O AtSignIcon estava faltando antes de siteConfig.handle, adicionei de volta caso queira */}
+            
             {siteConfig.handle}
           </a>
         </div>

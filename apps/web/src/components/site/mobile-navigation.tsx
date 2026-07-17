@@ -12,6 +12,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { siteConfig } from "@/lib/site";
+import Image from "next/image";
 
 export function MobileNavigation() {
   return (
@@ -28,7 +29,19 @@ export function MobileNavigation() {
       </SheetTrigger>
       <SheetContent className="flex flex-col bg-background">
         <div className="flex items-center gap-2.5 border-b border-border/70 pb-6 pr-10">
-          <FeatherIcon className="size-4 text-primary" strokeWidth={1.4} />
+          <Image
+                                src="/site/logos/image.png"
+                                alt={
+                                  
+                                  "Logo Julietta"
+                                }
+                               
+                                priority
+                                loading="eager"
+                                height={100}
+                                width={50}
+                                className="object-cover transition-transform duration-700 "
+                              />
           <div>
             <SheetTitle className="font-serif text-xl font-medium tracking-[-0.02em]">
               {siteConfig.name}
@@ -61,7 +74,7 @@ export function MobileNavigation() {
           href={siteConfig.instagramUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="pb-2 pt-4 text-center text-xs font-medium text-primary"
+          className="pb-2 pt-4 text-center text-md font-medium text-primary"
         >
           {siteConfig.handle}
         </a>

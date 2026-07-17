@@ -10,8 +10,8 @@ type AnimatedBookIntroProps = {
 
 const pageTurns = [
   { delay: 2.1, rotateY: -14 },
-  { delay: 2.18, rotateY: -10 },
-  { delay: 2.26, rotateY: -6 },
+  { delay: 2.15, rotateY: -10 },
+  { delay: 2.23, rotateY: -6 },
 ];
 
 /** Decorative book used only as the opening gesture for the hero title. */

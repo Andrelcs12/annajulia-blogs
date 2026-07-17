@@ -42,15 +42,20 @@ export function Hero() {
         <AnimatedName />
       </div>
       <div className="relative z-10 mt-8 max-w-3xl text-center sm:mt-12">
-        <a
-          href={siteConfig.instagramUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-background/70 px-4 py-2 text-sm font-medium text-primary transition-colors hover:border-primary/50 hover:bg-accent"
-        >
-          <AtSignIcon className="size-4" strokeWidth={1.5} />
-          {siteConfig.handle}
-        </a>
+        <Button
+  asChild
+  variant="outline"
+  size="lg"
+  className="rounded-full border-primary/25 bg-background/70 text-primary hover:border-primary/50 hover:bg-primary/5"
+>
+  <a
+    href={siteConfig.instagramUrl}
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    {siteConfig.handle}
+  </a>
+</Button>
         <div className="mt-7 font-serif text-xl leading-relaxed tracking-[-0.015em] text-foreground sm:text-3xl sm:leading-relaxed">
           {manifesto.map((line) => (
             <p key={line}>{line}</p>
