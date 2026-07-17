@@ -8,7 +8,7 @@ import { schemaTypes } from "@/sanity/schemaTypes";
 
 export default defineConfig({
   name: "default",
-  title: "Julietta — Cartas e escritos",
+  title: "Julietta Studio",
   projectId,
   dataset,
   basePath: "/studio",

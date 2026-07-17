@@ -27,11 +27,11 @@ export default function ContactPage() {
     <section className="relative overflow-hidden px-5 py-20 sm:px-8 sm:py-28 lg:px-12">
       <div
         aria-hidden="true"
-        className="absolute -left-24 top-20 size-72 rounded-full bg-primary/10 blur-3xl"
+        className="absolute -left-24 top-20 size-72 rounded-full bg-muted/80 blur-3xl"
       />
       <div
         aria-hidden="true"
-        className="absolute -right-24 bottom-20 size-72 rounded-full bg-secondary/45 blur-3xl"
+        className="absolute -right-24 bottom-20 size-72 rounded-full bg-muted/70 blur-3xl"
       />
 
       <div className="relative mx-auto max-w-3xl text-center">

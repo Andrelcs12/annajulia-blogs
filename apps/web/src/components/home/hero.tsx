@@ -1,5 +1,6 @@
 import { ArrowDownIcon, AtSignIcon } from "lucide-react";
 import Link from "next/link";
+import { BotanicalDecoration } from "@/components/brand/botanical-decoration";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/lib/site";
 import { AnimatedName } from "./animated-name";
@@ -16,13 +17,30 @@ export function Hero() {
     <section className="relative flex min-h-[calc(100svh-5rem)] flex-col items-center justify-center overflow-hidden px-5 py-16">
       <div
         aria-hidden="true"
-        className="absolute -left-20 top-24 size-72 rounded-full bg-primary/12 blur-3xl"
+        className="absolute -left-20 top-24 size-72 rounded-full bg-muted/80 blur-3xl"
       />
       <div
         aria-hidden="true"
-        className="absolute -right-24 bottom-24 size-80 rounded-full bg-secondary/55 blur-3xl"
+        className="absolute -right-24 bottom-24 size-80 rounded-full bg-muted/70 blur-3xl"
       />
-      <AnimatedName />
+      <BotanicalDecoration
+        className="absolute -left-24 top-20 z-0 hidden h-[32rem] w-52 opacity-60 md:block lg:-left-14"
+        parallax
+        variant="rose"
+      />
+      <BotanicalDecoration
+        className="absolute -right-24 bottom-14 z-0 hidden h-80 w-40 opacity-45 md:block lg:-right-10"
+        delay={0.1}
+        parallax
+        variant="sprig"
+      />
+      <BotanicalDecoration
+        className="absolute -right-8 top-7 z-0 h-36 w-24 opacity-35 md:hidden"
+        variant="corner"
+      />
+      <div className="relative z-10">
+        <AnimatedName />
+      </div>
       <div className="relative z-10 mt-8 max-w-3xl text-center sm:mt-12">
         <a
           href={siteConfig.instagramUrl}

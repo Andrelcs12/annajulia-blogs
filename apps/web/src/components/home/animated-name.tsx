@@ -2,91 +2,116 @@
 
 import { motion, useReducedMotion } from "motion/react";
 
+const NAME = "Julietta";
+
+const letterVariants = {
+  hidden: { opacity: 0, y: 40, filter: "blur(6px)" },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: {
+      delay: 0.5 + i * 0.055,
+      duration: 0.8,
+      ease: [0.22, 1, 0.36, 1] as const,
+    },
+  }),
+};
+
+function SideLines({ side }: { side: "left" | "right" }) {
+  const shouldReduceMotion = useReducedMotion();
+  const isLeft = side === "left";
+
+  return (
+    <div
+      aria-hidden="true"
+      className={`pointer-events-none absolute top-1/2  -translate-y-1/2   ${
+        isLeft ? "left-3 lg:left-0" : "right-3 lg:right-8"
+      }`}
+    >
+      <div className="flex flex-col items-center gap-[3px] sm:gap-1 lg:gap-1.5">
+        {Array.from({ length: 7 }).map((_, i) => {
+          const distanceFromCenter = Math.abs(i - 3);
+          const height = 40 - distanceFromCenter * 6;
+
+          return (
+            <motion.span
+              key={i}
+              className="block w-px origin-center bg-primary"
+              style={{ height: `${height}px` }}
+              initial={shouldReduceMotion ? false : { scaleY: 0, opacity: 0 }}
+              animate={{
+                scaleY: [0, 1, 1, 0.35],
+                opacity: [
+                  0,
+                  0.6 - distanceFromCenter * 0.08,
+                  0.6 - distanceFromCenter * 0.08,
+                  0.15,
+                ],
+              }}
+              transition={{
+                duration: 2,
+                delay: 0.6 + Math.abs(i - 3) * 0.08,
+                repeat: Number.POSITIVE_INFINITY,
+                repeatDelay: 1,
+                ease: "easeInOut",
+              }}
+            />
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 export function AnimatedName() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <div className="relative mx-auto w-full max-w-5xl px-3 py-10 sm:px-10 sm:py-14">
-      <motion.svg
-        aria-hidden="true"
-        viewBox="0 0 1000 360"
-        className="pointer-events-none absolute inset-0 size-full overflow-visible"
-        initial={shouldReduceMotion ? false : { opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.2 }}
+    <div className="relative mx-auto w-full max-w-none overflow-hidden px-4 py-14 text-center sm:py-20 lg:py-28">
+      <SideLines side="left" />
+      <SideLines side="right" />
+
+      <motion.p
+        className="mb-4 text-[0.65rem] font-medium uppercase tracking-[0.3em] text-primary sm:mb-6 sm:text-sm sm:tracking-[0.45em]"
+        initial={shouldReduceMotion ? false : { opacity: 0, y: -12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
       >
-        <motion.rect
-          x="22"
-          y="22"
-          width="956"
-          height="316"
-          rx="158"
-          fill="none"
-          stroke="var(--primary)"
-          strokeWidth="1.4"
-          initial={shouldReduceMotion ? false : { pathLength: 0, opacity: 0 }}
-          animate={{ pathLength: 1, opacity: 0.55 }}
-          transition={{ duration: 1.8, ease: [0.22, 1, 0.36, 1] }}
-        />
-        {!shouldReduceMotion && (
-          <motion.rect
-            x="38"
-            y="38"
-            width="924"
-            height="284"
-            rx="142"
-            fill="none"
-            stroke="var(--secondary-foreground)"
-            strokeWidth="1"
-            strokeDasharray="4 18"
-            animate={{ strokeDashoffset: [0, -176] }}
-            transition={{
-              duration: 9,
-              repeat: Number.POSITIVE_INFINITY,
-              ease: "linear",
-            }}
-            opacity="0.28"
-          />
+        Poemas · Textos · Reflexões
+      </motion.p>
+
+      <h1 className="whitespace-nowrap font-serif text-[clamp(4.5rem,15vw,14rem)] font-normal leading-[1.05] tracking-[-0.06em] text-foreground">
+        {shouldReduceMotion ? (
+          NAME
+        ) : (
+          <>
+            {NAME.split("").map((letter, i) => (
+              <motion.span
+                key={`${letter}-${i}`}
+                custom={i}
+                variants={letterVariants}
+                initial="hidden"
+                animate="visible"
+                className="inline-block"
+              >
+                {letter}
+              </motion.span>
+            ))}
+          </>
         )}
-      </motion.svg>
+      </h1>
 
       <motion.div
-        className="relative z-10 text-center"
-        initial={
-          shouldReduceMotion ? false : { opacity: 0, y: 24, scale: 0.98 }
-        }
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 1.1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-      >
-        <p className="mb-2 text-[0.68rem] font-medium uppercase tracking-[0.34em] text-muted-foreground sm:text-xs">
-          poemas · textos · reflexões
-        </p>
-        <h1 className="font-serif text-[clamp(4.5rem,18vw,12rem)] font-normal leading-[0.82] tracking-[-0.07em] text-foreground">
-          Julietta
-        </h1>
-
-        <motion.div
-          className="mx-auto mt-7 h-px w-24 origin-center bg-primary"
-          initial={shouldReduceMotion ? false : { scaleX: 0, opacity: 0 }}
-          animate={
-            shouldReduceMotion
-              ? { scaleX: 1, opacity: 1 }
-              : { scaleX: [0, 1, 1, 1], opacity: [0, 1, 1, 0] }
-          }
-          transition={
-            shouldReduceMotion
-              ? { duration: 0.6 }
-              : {
-                  duration: 1,
-                  times: [0, 0.25, 0.75, 1],
-                  delay: 1,
-                  repeat: Number.POSITIVE_INFINITY,
-                  repeatDelay: 2.5,
-                  ease: "easeInOut",
-                }
-          }
-        />
-      </motion.div>
+        className="mx-auto mt-6 h-px w-20 origin-center bg-primary sm:mt-9 sm:w-32"
+        initial={shouldReduceMotion ? false : { scaleX: 0, opacity: 0 }}
+        animate={{ scaleX: 1, opacity: 1 }}
+        transition={{
+          duration: 1,
+          delay: shouldReduceMotion ? 0 : 0.5 + NAME.length * 0.055 + 0.3,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+      />
     </div>
   );
 }

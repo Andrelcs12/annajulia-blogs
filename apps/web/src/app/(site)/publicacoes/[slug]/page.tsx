@@ -148,7 +148,7 @@ export default async function PublicationPage({
 
       <div className="mx-auto max-w-[46.875rem] px-5 py-14 sm:px-8 sm:py-20">
         <PublicationPortableText value={publication.content} />
-        <aside className="mt-14 rounded-lg border border-primary/15 bg-secondary/35 p-5 sm:p-6">
+        <aside className="mt-14 rounded-lg border border-primary/20 bg-muted/60 p-5 sm:p-6">
           <p className="font-serif text-xl text-foreground">
             Texto autoral de {siteConfig.name} —{" "}
             <a

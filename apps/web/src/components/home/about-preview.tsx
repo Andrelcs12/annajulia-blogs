@@ -4,6 +4,7 @@ import { ArrowRightIcon } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { AnonymousPortrait } from "@/components/brand/anonymous-portrait";
+import { BotanicalDecoration } from "@/components/brand/botanical-decoration";
 import { Button } from "@/components/ui/button";
 
 export function AboutPreview() {
@@ -31,9 +32,19 @@ export function AboutPreview() {
   return (
     <section
       ref={sectionRef}
-      className="overflow-hidden border-y border-border bg-secondary/35 py-16 sm:py-24 md:py-28"
+      className="relative overflow-hidden border-y border-border bg-muted/45 py-16 sm:py-24 md:py-28"
     >
-      <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 sm:gap-12 sm:px-8 md:grid-cols-[0.86fr_1.14fr] md:gap-16">
+      <BotanicalDecoration
+        className="absolute -right-24 top-1/2 z-0 hidden h-[28rem] w-52 -translate-y-1/2 opacity-45 md:block"
+        delay={0.1}
+        parallax
+        variant="rose"
+      />
+      <BotanicalDecoration
+        className="absolute -left-8 bottom-3 z-0 h-28 w-28 opacity-25 md:hidden"
+        variant="sprig"
+      />
+      <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-10 px-5 sm:gap-12 sm:px-8 md:grid-cols-[0.86fr_1.14fr] md:gap-16">
         <div
           className={`mx-auto w-full max-w-xs transition-all duration-1000 ease-out sm:max-w-md ${
             isVisible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"

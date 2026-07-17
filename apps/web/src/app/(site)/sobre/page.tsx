@@ -1,7 +1,9 @@
-import { AtSignIcon, MailIcon, QuoteIcon } from "lucide-react";
+import { AtSignIcon, MailIcon, PenLineIcon, QuoteIcon } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AnonymousPortrait } from "@/components/brand/anonymous-portrait";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -26,7 +28,7 @@ const socialLinks = [
 export default function AboutPage() {
   return (
     <article>
-      <header className="border-b border-border bg-secondary/30">
+      <header className="border-b border-border bg-muted/55">
         <div className="mx-auto max-w-5xl px-5 py-14 sm:px-8 sm:py-28">
           <p className="text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-muted-foreground sm:text-[0.68rem]">
             O pseudônimo
@@ -89,6 +91,26 @@ export default function AboutPage() {
           </div>
         </div>
       </div>
+
+      <section
+        aria-label="Acesso da autora"
+        className="mx-auto max-w-6xl px-5 pb-12 sm:px-8 sm:pb-16"
+      >
+        <Separator className="bg-border/70" />
+        <div className="flex justify-end pt-5">
+          <Button
+            asChild
+            variant="ghost"
+            size="sm"
+            className="min-h-11 px-3 text-muted-foreground hover:text-foreground"
+          >
+            <Link href="/studio">
+              <PenLineIcon aria-hidden="true" className="size-4" />
+              Área da autora
+            </Link>
+          </Button>
+        </div>
+      </section>
     </article>
   );
 }
