@@ -49,7 +49,7 @@ export function Hero() {
           className="rounded-full border-primary/25 bg-background/70 text-primary hover:border-primary/50 hover:bg-primary/5"
         >
           <a
-            href={siteConfig.instagramUrl}
+            href={siteConfig.twitterUrl}
             target="_blank"
             rel="noopener noreferrer"
           >

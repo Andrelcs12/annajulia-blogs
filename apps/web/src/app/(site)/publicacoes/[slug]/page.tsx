@@ -41,7 +41,7 @@ export async function generateMetadata({
         height: 630,
         quality: 88,
       })
-    : `${siteConfig.url}${siteConfig.editorialImage}`;
+    : `${siteConfig.url}/opengraph-image`;
 
   return {
     title,

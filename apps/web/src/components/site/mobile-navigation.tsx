@@ -65,10 +65,10 @@ export function MobileNavigation() {
         </nav>
 
         <a
-          href={siteConfig.instagramUrl}
+          href={siteConfig.twitterUrl}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={`${siteConfig.handle} no Instagram (abre em nova aba)`}
+          aria-label={`${siteConfig.handle} no X (abre em nova aba)`}
           className="min-h-11 pb-2 pt-4 text-center text-base font-medium text-primary"
         >
           {siteConfig.handle}

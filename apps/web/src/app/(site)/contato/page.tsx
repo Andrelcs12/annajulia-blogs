@@ -46,6 +46,14 @@ export default function ContactPage() {
           Envie uma mensagem para Julietta. A identidade por trás do pseudônimo
           permanecerá reservada.
         </p>
+        <a
+          href={siteConfig.twitterUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-5 inline-flex text-sm font-medium text-primary underline decoration-primary/50 underline-offset-4 transition-colors hover:text-foreground"
+        >
+          {siteConfig.handle} no X
+        </a>
       </div>
 
       <div className="relative mx-auto mt-14 max-w-3xl rounded-lg border border-border/70 bg-background/82 p-5 shadow-[0_24px_80px_rgba(91,24,39,0.12)] backdrop-blur sm:p-8">

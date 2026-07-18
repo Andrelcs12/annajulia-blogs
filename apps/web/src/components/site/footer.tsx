@@ -30,7 +30,7 @@ export function Footer() {
             Cartas, poemas e sentimentos que nunca foram enviados.
           </p>
           <a
-            href={siteConfig.instagramUrl}
+            href={siteConfig.twitterUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-primary transition-colors hover:text-foreground"

@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "Julietta",
   fullName: "Julietta",
   handle: "@cartasporjulietta",
-  instagramUrl: "https://www.instagram.com/cartasporjulietta/",
+  twitterUrl: "https://x.com/cartasporjulietta",
   description:
     "Cartas, poemas e sentimentos que nunca foram enviados, escritos sob o pseudônimo Julietta.",
   editorialImage: "/images/julietta-editorial-placeholder.png",

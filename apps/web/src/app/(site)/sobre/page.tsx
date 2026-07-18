@@ -16,7 +16,7 @@ const socialLinks = [
   {
     icon: AtSignIcon,
     label: siteConfig.handle,
-    href: siteConfig.instagramUrl,
+    href: siteConfig.twitterUrl,
   },
   {
     icon: MailIcon,

@@ -46,10 +46,10 @@ export function Header() {
             </ul>
           </nav>
           <a
-            href={siteConfig.instagramUrl}
+            href={siteConfig.twitterUrl}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={`${siteConfig.handle} no Instagram (abre em nova aba)`}
+            aria-label={`${siteConfig.handle} no X (abre em nova aba)`}
             className="text-xs font-medium text-primary transition-colors hover:text-foreground"
           >
             {siteConfig.handle}

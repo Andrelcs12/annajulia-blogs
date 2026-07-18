@@ -33,7 +33,7 @@ function SheetOverlay({
     <SheetPrimitive.Overlay
       data-slot="sheet-overlay"
       className={cn(
-        "fixed inset-0 z-50 bg-foreground/12 backdrop-blur-[2px] data-[state=closed]:animate-out data-[state=open]:animate-in data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+        "fixed inset-0 z-50 bg-foreground/12 backdrop-blur-[2px] opacity-0 transition-opacity duration-300 ease-out data-[state=open]:opacity-100 motion-reduce:transition-none",
         className,
       )}
       {...props}
@@ -55,13 +55,15 @@ function SheetContent({
       <SheetPrimitive.Content
         data-slot="sheet-content"
         className={cn(
-          "fixed z-50 flex flex-col gap-4 bg-background p-7 shadow-lg transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-500",
+          "fixed z-50 flex flex-col gap-4 bg-background p-7 opacity-0 shadow-lg transition-[transform,opacity] duration-300 ease-out data-[state=open]:opacity-100 data-[state=closed]:duration-200 motion-reduce:transition-none",
           side === "right" &&
-            "inset-y-0 right-0 h-full w-[86%] border-l border-border sm:max-w-sm",
+            "inset-y-0 right-0 h-full w-[86%] translate-x-full border-l border-border data-[state=open]:translate-x-0 sm:max-w-sm",
           side === "left" &&
-            "inset-y-0 left-0 h-full w-[86%] border-r border-border sm:max-w-sm",
-          side === "top" && "inset-x-0 top-0 border-b border-border",
-          side === "bottom" && "inset-x-0 bottom-0 border-t border-border",
+            "inset-y-0 left-0 h-full w-[86%] -translate-x-full border-r border-border data-[state=open]:translate-x-0 sm:max-w-sm",
+          side === "top" &&
+            "inset-x-0 top-0 -translate-y-full border-b border-border data-[state=open]:translate-y-0",
+          side === "bottom" &&
+            "inset-x-0 bottom-0 translate-y-full border-t border-border data-[state=open]:translate-y-0",
           className,
         )}
         {...props}
