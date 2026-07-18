@@ -156,7 +156,7 @@ export default async function PublicationPage({
           <p className="font-serif text-xl text-foreground">
             Texto autoral de {siteConfig.name} —{" "}
             <a
-              href={siteConfig.instagramUrl}
+              href={siteConfig.twitterUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="text-primary underline decoration-primary/40 underline-offset-4 transition-colors hover:text-foreground"
