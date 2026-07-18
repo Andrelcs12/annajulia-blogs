@@ -17,8 +17,8 @@ export function Header() {
             alt="Logo Julietta"
             priority
             height={40}
-            width={24}
-            className="h-10 w-6 object-contain"
+            width={50}
+            className="h-10 w-10 object-contain mt-1"
           />
           <Link
             href="/"

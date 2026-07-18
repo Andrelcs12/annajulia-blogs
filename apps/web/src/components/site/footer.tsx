@@ -6,8 +6,7 @@ import { BotanicalDecoration } from "../brand/botanical-decoration";
 export function Footer() {
   return (
     <footer className="relative mt-20 overflow-hidden border-t border-border/70 bg-muted/20 sm:mt-24">
-      {/* 2. BotanicalDecoration movido para cá como background absoluto */}
-      <div className="pointer-events-none absolute inset-0 mt-24 -z-10 flex items-center justify-center md:mt-44 opacity-10 sm:opacity-40">
+      <div className="pointer-events-none absolute inset-0 -z-10 mt-24 flex items-center justify-center opacity-10 sm:opacity-40 md:mt-44">
         <BotanicalDecoration />
       </div>
 
@@ -26,17 +25,17 @@ export function Footer() {
             />
             {siteConfig.name}
           </Link>
+
           <p className="mx-auto mt-4 max-w-sm text-sm leading-7 text-muted-foreground md:mx-0">
             Cartas, poemas e sentimentos que nunca foram enviados.
           </p>
+
           <a
             href={siteConfig.twitterUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-primary transition-colors hover:text-foreground"
           >
-            {/* O AtSignIcon estava faltando antes de siteConfig.handle, adicionei de volta caso queira */}
-
             {siteConfig.handle}
           </a>
         </div>
@@ -58,13 +57,33 @@ export function Footer() {
       </div>
 
       <div className="border-t border-border/60">
-        <div className="mx-auto flex max-w-7xl flex-col items-center gap-2 px-5 py-6 text-center text-xs text-muted-foreground sm:flex-row sm:justify-between sm:px-8 sm:text-left lg:px-12">
+        <div className="mx-auto flex max-w-7xl flex-col items-center gap-3 px-5 py-6 text-center text-xs text-muted-foreground sm:px-8 lg:px-12">
           <p>
             © {new Date().getFullYear()} Julietta. Todos os textos publicados
             neste site são de autoria da autora e não podem ser reproduzidos
             integralmente sem autorização.
           </p>
-          <p>Textos autorais publicados sob o pseudônimo Julietta.</p>
+
+          <div className="flex flex-col items-center gap-2 sm:flex-row sm:gap-4">
+            <p>Textos autorais publicados sob o pseudônimo Julietta.</p>
+
+            <span className="hidden sm:inline" aria-hidden="true">
+              •
+            </span>
+
+            <p>
+              Desenvolvido por{" "}
+              <a
+                href="https://www.instagram.com/andrelucas___/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-foreground underline-offset-4 transition-colors hover:text-primary hover:underline"
+                aria-label="Instagram de André Lucas"
+              >
+                André Lucas
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </footer>

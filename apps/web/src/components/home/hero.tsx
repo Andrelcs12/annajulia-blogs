@@ -14,7 +14,7 @@ const manifesto = [
 
 export function Hero() {
   return (
-    <section className="relative flex min-h-[calc(100svh-5rem)] flex-col items-center justify-center overflow-hidden px-5 py-16">
+    <section className="relative flex min-h-[calc(100svh-5rem)] flex-col items-center justify-center overflow-hidden px-5">
       <div
         aria-hidden="true"
         className="absolute -left-20 top-24 size-72 rounded-full bg-muted/80 blur-3xl"
@@ -46,7 +46,7 @@ export function Hero() {
           asChild
           variant="outline"
           size="lg"
-          className="rounded-full border-primary/25 bg-background/70 text-primary hover:border-primary/50 hover:bg-primary/5"
+          className="rounded-full border-primary/25 bg-background/70 text-primary hover:border-primary/50 hover:bg-muted hover:text-primary"
         >
           <a
             href={siteConfig.twitterUrl}
@@ -73,7 +73,7 @@ export function Hero() {
       <a
         href="#destaque"
         aria-label="Ir para a publicação em destaque"
-        className="absolute bottom-7 left-1/2 z-10 -translate-x-1/2 rounded-full p-3 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+        className=" mt-4 z-10 -translate-x-1/2 rounded-full p-3 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
       >
         <ArrowDownIcon className="size-5 animate-[soft-bounce_2.4s_ease-in-out_infinite]" />
       </a>
